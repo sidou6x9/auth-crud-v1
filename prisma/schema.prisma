@@ -31,12 +31,12 @@ model User {
 model Post {
   id                 String   @id @default(cuid())
   title              String
-  category           String
   excerpt            String
   content            String
-  status             String // e.g., "draft" or "published"
-  image              String?
-  cloudinaryPublicId String? // new field
+  readTime           Int
+  status             String // "draft" or "published"
+  imageUrl           String? // Direct Cloudinary URL
+  cloudinaryPublicId String? // For deletion/updates
   authorId           String
   author             User     @relation(fields: [authorId], references: [id])
   createdAt          DateTime @default(now())
